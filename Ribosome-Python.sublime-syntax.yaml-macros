@@ -1,0 +1,9 @@
+%YAML 1.2
+%TAG ! tag:yaml-macros:YAMLMacros.lib.arguments,YAMLMacros.lib.include
+---
+
+!with
+  - language: Python
+    extension: py
+    langcontext: python
+  - !include_resource "Packages/Ribosome/Ribosome-Impl.sublime-syntax.yaml-macros"

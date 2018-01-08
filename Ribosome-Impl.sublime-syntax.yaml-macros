@@ -1,37 +1,40 @@
 %YAML 1.2
+%TAG ! tag:yaml-macros:YAMLMacros.lib.arguments:
 ---
-name: Ribosome (Python)
-file_extensions: [dna.py, py.dna]
-scope: source.dna
+name: !format 'Ribosome ({language})'
+scope: !format 'source.{extension}.dna'
+file_extensions:
+  - !format '{extension}.dna'
+  - !format 'dna.{extension}'
 
 contexts:
   main:
     - match: ""
-      push: scope:source.python
+      push: !format 'scope:source.{langcontext}'
       with_prototype:
       - match: ^\s*\.+
         comment: Ribosome (possibly with indentation and nested embedded expressions)
-        scope: meta.preprocessor.dna
+        scope: !format 'meta.preprocessor.{extension}.dna'
         set: ribosome_line
 
   ribosome_line:
     - match: \$?$
       comment: End of line
-      scope: punctuation.terminator.dna
+      scope: !format 'punctuation.terminator.{extension}.dna'
       pop: true
 
     - match: "/[+=]"
       comment: Ribosome line operator or command
-      scope: keyword.operator.dna punctuation.definition.keyword.dna
+      scope: !format 'keyword.operator.{extension}.dna punctuation.definition.keyword.{extension}.dna'
 
     - match: "/!"
       comment: Ribosome command
-      scope: keyword.operator.word.dna punctuation.definition.keyword.dna
+      scope: !format 'keyword.operator.word.{extension}.dna punctuation.definition.keyword.{extension}.dna'
       set: line_operator
 
     - match: "[@&][1-9]?(?={)"
       comment: Embedded expression (possibly nested and/or whitespace-stripping)
-      scope: keyword.operator.dna punctuation.definition.keyword.dna
+      scope: !format 'keyword.operator.{extension}.dna punctuation.definition.keyword.{extension}.dna'
       push: at_expression
 
     - match: .
@@ -40,11 +43,11 @@ contexts:
   line_operator:
     - match: "(?<=/!)(output|stdout|append|separate|tabsize|include)"
       comment: One of the built-in Ribosome commands
-      scope: keyword.operator.word.dna
+      scope: !format 'keyword.operator.word.{extension}.dna'
 
     - match: \(
       comment: Begin command argument
-      push: scope:source.python
+      push: !format 'scope:source.{langcontext}'
       with_prototype:
         - match: (?=\))
           comment: End command argument
@@ -57,11 +60,11 @@ contexts:
   at_expression:
     - match: \{
       comment: Beginning of the @expression
-      push: scope:source.python
+      push: !format 'scope:source.{langcontext}'
       with_prototype:
         - match: "(at|amp|slash)"
           comment: Some special escape sequences
-          scope: constant.character.escape.dna
+          scope: !format 'constant.character.escape.{extension}.dna'
         - match: (?=\})
           comment: End expression
           pop: true

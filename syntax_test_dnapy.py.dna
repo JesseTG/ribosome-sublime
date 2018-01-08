@@ -1,4 +1,4 @@
-# SYNTAX TEST "Packages/Ribosome/ribosome-py.sublime-syntax"
+# SYNTAX TEST "Packages/Ribosome/Ribosome-Python.sublime-syntax"
 
 import antigravity
 #^^^^^^^^^^^^^^^^^ source.python
