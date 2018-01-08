@@ -2,7 +2,7 @@
 ---
 name: Ribosome (Python)
 file_extensions: [dna.py, py.dna]
-scope: source.dnapy
+scope: source.dna
 
 contexts:
   main:
@@ -11,26 +11,27 @@ contexts:
       with_prototype:
       - match: ^\s*\.+
         comment: Ribosome (possibly with indentation and nested embedded expressions)
-        push: ribosome_line
+        scope: meta.preprocessor.dna
+        set: ribosome_line
 
   ribosome_line:
     - match: \$?$
       comment: End of line
-      scope: punctuation.terminator.dnapy
+      scope: punctuation.terminator.dna
       pop: true
 
     - match: "/[+=]"
       comment: Ribosome line operator or command
-      scope: keyword.operator.dnapy
+      scope: keyword.operator.dna punctuation.definition.keyword.dna
 
     - match: "/!"
       comment: Ribosome command
-      scope: keyword.operator.word.dnapy
-      push: line_operator
+      scope: keyword.operator.word.dna punctuation.definition.keyword.dna
+      set: line_operator
 
     - match: "[@&][1-9]?(?={)"
       comment: Embedded expression (possibly nested and/or whitespace-stripping)
-      scope: keyword.operator.dnapy
+      scope: keyword.operator.dna punctuation.definition.keyword.dna
       push: at_expression
 
     - match: .
@@ -39,7 +40,7 @@ contexts:
   line_operator:
     - match: "(?<=/!)(output|stdout|append|separate|tabsize|include)"
       comment: One of the built-in Ribosome commands
-      scope: keyword.operator.word.dnapy
+      scope: keyword.operator.word.dna
 
     - match: \(
       comment: Begin command argument
@@ -60,7 +61,7 @@ contexts:
       with_prototype:
         - match: "(at|amp|slash)"
           comment: Some special escape sequences
-          scope: constant.character.escape.dnapy
+          scope: constant.character.escape.dna
         - match: (?=\})
           comment: End expression
           pop: true
