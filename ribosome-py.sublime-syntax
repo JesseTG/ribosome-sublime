@@ -28,7 +28,7 @@ contexts:
       scope: keyword.operator.word.dnapy
       push: line_operator
 
-    - match: "[@&][1-9]?"
+    - match: "[@&][1-9]?(?={)"
       comment: Embedded expression (possibly nested and/or whitespace-stripping)
       scope: keyword.operator.dnapy
       push: at_expression
