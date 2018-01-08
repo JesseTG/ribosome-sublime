@@ -3,6 +3,7 @@
 ---
 name: !format 'Ribosome ({language})'
 scope: !format 'source.{extension}.dna'
+first_line_match: !format ".*(ribosome\\.{extension}).*"
 file_extensions:
   - !format '{extension}.dna'
   - !format 'dna.{extension}'
