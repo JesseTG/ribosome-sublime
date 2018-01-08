@@ -1,0 +1,120 @@
+# SYNTAX TEST "Packages/Ribosome/ribosome-py.sublime-syntax"
+
+import antigravity
+#^^^^^^^^^^^^^^^^^ source.python
+#<-source.python
+
+for i in range(3):
+#^^^^^^^^^^^^^^^^^^ source.python
+.    Indented text!
+# <- meta.preprocessor.dna
+#^^^^^^^^^^^^^^^^^^ string.dna
+    .Indented dot!
+#   ^ meta.preprocessor.dna
+#    ^^^^^^^^^^^^^ string.dna
+
+./!output("temporary.txt")
+# <- meta.preprocessor.dna
+# ^^^^^^^^^^^^^^^^^^^^^^^^ meta.function-call.dna
+#        ^ punctuation.definition.arguments.begin.dna
+#        ^^^^^^^^^^^^^^^^^ source.python
+#                        ^ punctuation.definition.arguments.end.dna
+#^ punctuation.definition.keyword.dna
+# ^^^^^^^ keyword.operator.word.dna
+.Saved to temporary.txt
+./!stdout()
+# ^^^^^^^^^ meta.function-call.dna
+#        ^^ source.python
+#        ^ punctuation.definition.arguments.begin.dna
+#         ^ punctuation.definition.arguments.end.dna
+# ^^^^^^^ keyword.operator.word.dna
+
+./!stdout
+# ^^^^^^^ keyword.operator.word.dna
+# ^^^^^^^ meta.function-call.dna
+
+.Back to stdout (no parens is fine too)
+# <- meta.preprocessor.dna
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.dna
+
+./!append("temporary.txt")
+# ^^^^^^^^^^^^^^^^^^^^^^^^ meta.function-call.dna
+# ^^^^^^^ keyword.operator.word.dna
+
+./!output ( "spaces are okay.txt" )
+# ^^^^^^^ keyword.operator.word.dna
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.function-call.dna
+#        ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.python
+
+./!output "spaces are still okay.txt"
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.function-call.dna
+# ^^^^^^^ keyword.operator.word.dna
+#        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.python
+
+.Also, still a string
+# <- meta.preprocessor.dna
+#^^^^^^^^^^^^^^^^^^^^ string.dna
+
+.    /!stdout()
+#    ^ punctuation.definition.keyword.dna
+#     ^^^^^^^ keyword.operator.word.dna
+#^^^^ meta.preprocessor.dna
+# <- meta.preprocessor.dna
+.    Preceding whitespace
+
+name = "foo"
+./!output(name + ".txt")
+
+./!output("test.txt")
+.This line goes to the file!
+./!stdout()
+.This line goes to the console!
+
+./!output("test.txt")
+.Stuff
+./!stdout()
+./!append("test.txt")
+.More stuff
+
+def greet(name):
+    .printf ("Hello, @{name}!\n");
+
+.int main () {
+.    @{greet("Alice")}
+.    @{greet("Bob")}
+.    return 0;
+.}
+
+.Hello $
+for i in ["Alice", "Bob", "Carol"]:
+    ./+@{i} $
+./+!
+
+.Hello $
+./!separate(", ")
+for i in ["Alice", "Bob", "Carol"]:
+    .   /+@{i}
+./+!
+
+s = " 2 "
+.1@{s}3
+.1&{s}3
+
+.name = "Alice"
+..Hello, @1{name}!
+
+.123@{at}{456
+
+.        Hello,
+./=world!
+
+./!tabsize(4)
+# ^^^^^^^^ keyword.operator.word.dna
+
+
+.for (i = 0; i != 10; ++i)
+.    printf("Hi!\n");
+.}
+
+./!include("foo.dna")
+# ^^^^^^^^ keyword.operator.word.dna keyword.control.import.dna
