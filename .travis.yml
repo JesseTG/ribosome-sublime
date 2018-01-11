@@ -11,7 +11,9 @@ install:
   - sudo apt-get update
   - sudo apt-get install -y sublime-text xvfb
   - pip3 install ruamel.yaml
-  - git clone --depth=1 https://github.com/Thom1729/YAML-Macros YAMLMacros
+  - mkdir -p ~/.config/sublime-text-3/Packages
+  - git clone --depth=1 https://github.com/Thom1729/YAML-Macros ~/.config/sublime-text-3/Packages/YAMLMacros
+  - ls ~/.config/sublime-text-3/Packages/YAMLMacros
 script:
   - chmod +x ./script.sh
   - ./script.sh
