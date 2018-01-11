@@ -13,4 +13,4 @@ install:
   - pip3 install ruamel.yaml
   - git clone --depth=1 https://github.com/Thom1729/YAML-Macros YAMLMacros
 script:
-  - python3 ./YAMLMacros/cli/cli.py < ./ribosome-sublime/Ribosome-Python.sublime-syntax.yaml-macros
+  - python3 ./YAMLMacros/cli/cli.py < ./Ribosome-Python.sublime-syntax.yaml-macros
