@@ -9,10 +9,11 @@ install:
   - wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
   - echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
   - sudo apt-get update
-  - sudo apt-get install -y sublime-text xvfb
+  - sudo apt-get install -y sublime-text xvfb tree
   - pip3 install ruamel.yaml
   - mkdir -p ~/.config/sublime-text-3/Packages
   - git clone --depth=1 https://github.com/Thom1729/YAML-Macros ~/.config/sublime-text-3/Packages/YAMLMacros
 script:
   - chmod +x ./script.sh
   - ./script.sh
+  - tree ~
