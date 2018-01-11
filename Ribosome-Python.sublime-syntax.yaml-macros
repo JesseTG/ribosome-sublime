@@ -6,4 +6,4 @@
   - language: Python
     extension: py
     langcontext: python
-  - !include "Packages/Ribosome/Ribosome-Impl.sublime-syntax.yaml-macros"
+  - !include "Ribosome-Impl.sublime-syntax.yaml-macros"
