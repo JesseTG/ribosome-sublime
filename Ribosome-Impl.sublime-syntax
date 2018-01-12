@@ -1,0 +1,71 @@
+%YAML 1.2
+---
+name: 'Ribosome ({language})'
+scope: 'source.{extension}.dna'
+first_line_match: ".*(ribosome\\.{extension}).*"
+file_extensions: ['{extension}.dna', 'dna.{extension}']
+
+contexts:
+  main:
+    - match: ""
+      push: 'scope:source.{langcontext}'
+      with_prototype:
+      - match: ^\s*\.+
+        comment: Ribosome (possibly with indentation and nested embedded expressions)
+        scope: 'meta.preprocessor.{extension}.dna'
+        set: ribosome_line
+
+  ribosome_line:
+    - match: \$?$
+      comment: End of line
+      scope: 'punctuation.terminator.{extension}.dna'
+      pop: true
+
+    - match: "/[+=]"
+      comment: Ribosome line operator or command
+      scope: 'keyword.operator.{extension}.dna punctuation.definition.keyword.{extension}.dna'
+
+    - match: "/!"
+      comment: Ribosome command
+      scope: 'keyword.operator.word.{extension}.dna punctuation.definition.keyword.{extension}.dna'
+      set: line_operator
+
+    - match: "[@&][1-9]?(?={)"
+      comment: Embedded expression (possibly nested and/or whitespace-stripping)
+      scope: 'keyword.operator.{extension}.dna punctuation.definition.keyword.{extension}.dna'
+      push: at_expression
+
+    - match: .
+      scope: string
+
+  line_operator:
+    - match: "(?<=/!)(output|stdout|append|separate|tabsize|include)"
+      comment: One of the built-in Ribosome commands
+      scope: 'keyword.operator.word.{extension}.dna'
+
+    - match: \(
+      comment: Begin command argument
+      push: 'scope:source.{langcontext}'
+      with_prototype:
+        - match: (?=\))
+          comment: End command argument
+          pop: true
+
+    - match: \)
+      pop: true
+
+
+  at_expression:
+    - match: \{
+      comment: Beginning of the @expression
+      push: 'scope:source.{langcontext}'
+      with_prototype:
+        - match: "(at|amp|slash)"
+          comment: Some special escape sequences
+          scope: 'constant.character.escape.{extension}.dna'
+        - match: (?=\})
+          comment: End expression
+          pop: true
+
+    - match: \}
+      pop: true

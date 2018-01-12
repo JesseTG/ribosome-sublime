@@ -1,7 +1,7 @@
 git:
   depth: 1
 script:
-  - cat ./Ribosome-Impl.sublime-syntax | sed -f python.sed > Ribosome-Python.sublime-syntax
-  - cat ./Ribosome-Impl.sublime-syntax | sed -f js.sed > Ribosome-JavaScript.sublime-syntax
-  - cat ./Ribosome-Impl.sublime-syntax | sed -f ruby.sed > Ribosome-Ruby.sublime-syntax
+  - cat Ribosome-Impl.sublime-syntax | sed -f python.sed > Ribosome-Python.sublime-syntax
+  - cat Ribosome-Impl.sublime-syntax | sed -f js.sed > Ribosome-JavaScript.sublime-syntax
+  - cat Ribosome-Impl.sublime-syntax | sed -f ruby.sed > Ribosome-Ruby.sublime-syntax
   - ls
