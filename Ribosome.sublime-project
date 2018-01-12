@@ -5,5 +5,19 @@
       "file_exclude_patterns": ["*.pyc", "*.cleanup", "*.sublime-workspace", ".fuse*"],
       "follow_symlinks": true
     }
+  ],
+  "build_systems": [
+    {
+        "name": "Build Python",
+        "shell_cmd": "cat Ribosome-Impl.sublime-syntax | sed -f python.sed > Ribosome-Python.sublime-syntax"
+    },
+    {
+        "name": "Build Ruby",
+        "shell_cmd": "cat Ribosome-Impl.sublime-syntax | sed -f ruby.sed > Ribosome-Ruby.sublime-syntax"
+    },
+    {
+        "name": "Build JavaScript",
+        "shell_cmd": "cat Ribosome-Impl.sublime-syntax | sed -f js.sed > Ribosome-JavaScript.sublime-syntax"
+    }
   ]
 }
