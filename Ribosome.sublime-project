@@ -2,7 +2,7 @@
   "folders": [
     {
       "path": ".",
-      "file_exclude_patterns": ["*.sublime-syntax", "*.pyc", "*.cleanup", "*.sublime-workspace", ".fuse*"],
+      "file_exclude_patterns": ["*.pyc", "*.cleanup", "*.sublime-workspace", ".fuse*"],
       "follow_symlinks": true
     }
   ]
