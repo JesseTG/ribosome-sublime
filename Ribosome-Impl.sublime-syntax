@@ -21,7 +21,7 @@ contexts:
       scope: 'punctuation.terminator.{extension}.dna'
       pop: true
 
-    - match: "/[+=]"
+    - match: "(?<=\\.)/[+=]"
       comment: Ribosome line operator or command
       scope: 'keyword.operator.{extension}.dna punctuation.definition.keyword.{extension}.dna'
 
