@@ -1,7 +1,16 @@
 git:
   depth: 1
 script:
-  - cat Ribosome-Impl.sublime-syntax | sed -f python.sed > Ribosome-Python.sublime-syntax
-  - cat Ribosome-Impl.sublime-syntax | sed -f js.sed > Ribosome-JavaScript.sublime-syntax
-  - cat Ribosome-Impl.sublime-syntax | sed -f ruby.sed > Ribosome-Ruby.sublime-syntax
-  - ls
+- cat Ribosome-Impl.sublime-syntax | sed -f python.sed > Ribosome-Python.sublime-syntax
+- cat Ribosome-Impl.sublime-syntax | sed -f js.sed > Ribosome-JavaScript.sublime-syntax
+- cat Ribosome-Impl.sublime-syntax | sed -f ruby.sed > Ribosome-Ruby.sublime-syntax
+- zip -9 Ribosome-Sublime.sublime-package Ribosome-{Python,Ruby,JavaScript}.sublime-syntax README.md LICENSE
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: a1/xV3TkNyE5MRAl1eog8Zxzlz8zk0JCwueOBoxwAorICUjAynXcvN4DbFfZRksETepaTAgLLY1OT/5pEPMZi+3rJVvfh8qRIhuzozTa4cixbQRRlnz3a3pmipLGfXpzjdeHwXMcg1gH4g/aErYUKBUwfzoRTEaP2iJxQd0Zh92lIFHBf+93ebbpPeipU+XirzsoMf/Oq7v2GOXr9WyonR54AWRNLh7x7NE+jzEB5RAe+bk3CVLiE033/LZjoARtKlA+iDg7KLp3yhkzMAPv6OAOef/tJaIZapraSY3bfFWOkdUDYdqnAR5TWg/N8rGRlkNffxe+rFcL+5vChJ5YRDB0I3AKG6SAyb7NRycbLwUF3etRET7LaIqlUnwzSW5Jojku3l4bdVsjoASZo/wVM4ws4rO/cUB1m+3py5GOW34rP3tEpC2Y9TEpNsP0h8IG2OJI/TYVSONxP2chjl/C41lA+IXTTTtAZWhH0ryzHC2xLD9jAiazqFittW81InQKxMc7sPHQGBjo9/0oU9ae7tgWxRDw1/RAlg2cwnouS9nw508dsB4b/DqqOi7Z5TrIjx0wEigKEdaEhlZio0eayjdKLPr8E4XBNJwd72ICfHKeNPJ5iDxIEaKQzN0mJiiMsA+rFdpE+SH4jtN1t0bwiuHEvQGDpRUpYaHc9vGdgLM=
+  file: Ribosome-Sublime.sublime-package
+  on:
+    repo: JesseTG/ribosome-sublime
+    tags: true
