@@ -11,9 +11,9 @@
       "releases": [
         {
           "sublime_text": ">=3092",
-          "version": "0.1.4",
-          "url": "https://github.com/JesseTG/ribosome-sublime/archive/0.1.4.zip",
-          "tags": "st3-"
+          "version": "v0.1.5",
+          "url": "https://github.com/JesseTG/ribosome-sublime/archive/v0.1.5.zip",
+          "tags": "v"
         }
       ]
     }
