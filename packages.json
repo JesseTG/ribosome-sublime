@@ -11,7 +11,7 @@
       "releases": [
         {
           "sublime_text": ">=3092",
-          "version": "0.1.2",
+          "version": "v0.1.2",
           "tags": "st3-"
         }
       ]
