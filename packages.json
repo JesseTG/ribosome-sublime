@@ -1,17 +1,17 @@
 {
-
   "schema_version": "3.0.0",
-
   "packages": [
     {
       "name": "Ribosome Syntax",
       "details": "https://github.com/JesseTG/ribosome-sublime",
       "readme": "https://raw.githubusercontent.com/JesseTG/ribosome-sublime/master/README.md",
-      "labels": ["language syntax"],
+      "labels": [
+        "language syntax"
+      ],
       "releases": [
         {
           "sublime_text": ">=3092",
-          "version": "v0.1.5",
+          "version": "0.1.5",
           "url": "https://github.com/JesseTG/ribosome-sublime/archive/v0.1.5.zip"
         }
       ]
